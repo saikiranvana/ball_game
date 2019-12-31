@@ -1,0 +1,144 @@
+*******creating a ball game using python (tkinter and turtle)*********
+
+
+
+import turtle
+import math
+import random
+from tkinter import *
+
+
+#intializing TURTLE SCREEN
+sc=turtle.Screen()
+sc.title("Ball Game")
+sc.bgcolor("black")
+
+#all back turtles are down ARROWS which are for boundaries
+back=turtle.Turtle()
+back.setposition(-350,-200)
+back.color("green")
+
+back.pendown()
+back.forward(100)
+back.speed(16)
+
+#
+back1=turtle.Turtle()
+back1.setposition(-250,-200)
+back1.color("green")
+
+back1.pendown()
+back1.forward(100)
+back1.speed(16)
+#
+back2=turtle.Turtle()
+back2.setposition(-150,-200)
+back2.color("green")
+
+back2.pendown()
+back2.forward(100)
+back2.speed(16)
+#
+back3=turtle.Turtle()
+back3.setposition(-50,-200)
+back3.color("green")
+
+back3.pendown()
+back3.forward(100)
+back3.speed(16)
+
+#
+back4=turtle.Turtle()
+back4.setposition(50,-200)
+back4.color("green")
+
+back4.pendown()
+back4.forward(100)
+back4.speed(16)
+
+#
+back5=turtle.Turtle()
+back5.setposition(150,-200)
+back5.color("green")
+
+back5.pendown()
+back5.forward(100)
+back5.speed(16)
+#
+back6=turtle.Turtle()
+back6.setposition(250,-200)
+back6.color("green")
+
+back6.pendown()
+back6.forward(100)
+back6.speed(16)
+
+#this sys turtle is system turtle
+sym=turtle.Turtle()
+sym.setposition(20,-150)
+sym.shape("square")
+sym.shapesize(2,2,2)
+sym.color("red")
+
+
+# food turtle is the ball
+food=turtle.Turtle()
+food.shape("circle")
+food.setposition(random.randint(-300,300),random.randint(0,250))
+food.color("orange")
+food.penup()
+food.left(270)
+
+
+
+# for movement of keys
+
+
+def right():
+    sym.setheading(0)
+    sym.forward(50)
+    sym.penup()
+def left():
+    sym.setheading(180)
+    sym.forward(50)
+    sym.penup()
+turtle.listen()
+turtle.onkey(right, 'Right')
+turtle.onkey(left, 'Left')
+
+spe=2
+while(True):
+    food.forward(spe)
+
+    d = math.sqrt(math.pow(food.xcor() - sym.xcor(), 2)) + math.sqrt(math.pow(food.ycor() - sym.ycor(), 2))
+    dd = math.sqrt(math.pow(food.xcor() - back.xcor(), 2)) + math.sqrt(math.pow(food.ycor() - back.ycor(), 2))
+    dd1 = math.sqrt(math.pow(food.xcor() - back1.xcor(), 2)) + math.sqrt(math.pow(food.ycor() - back1.ycor(), 2))
+    dd2 = math.sqrt(math.pow(food.xcor() - back2.xcor(), 2)) + math.sqrt(math.pow(food.ycor() - back2.ycor(), 2))
+    dd3 = math.sqrt(math.pow(food.xcor() - back3.xcor(), 2)) + math.sqrt(math.pow(food.ycor() - back3.ycor(), 2))
+    dd4 = math.sqrt(math.pow(food.xcor() - back4.xcor(), 2)) + math.sqrt(math.pow(food.ycor() - back4.ycor(), 2))
+    dd5 = math.sqrt(math.pow(food.xcor() - back5.xcor(), 2)) + math.sqrt(math.pow(food.ycor() - back5.ycor(), 2))
+    dd6 = math.sqrt(math.pow(food.xcor() - back6.xcor(), 2)) + math.sqrt(math.pow(food.ycor() - back6.ycor(), 2))
+    if(d<40):
+        food.setposition(random.randint(-300, 300), random.randint(0, 250))
+
+    if(dd<50 or dd1<50 or dd2<50 or dd3<50 or dd4<50 or dd5<50 or dd6<50):
+        sai=Tk()
+        sai.title(" Game End ")
+        sai.geometry("300x80")
+        lab=Label(sai,text="Sorry !! you Lost",font="Times 20 bold")
+        lab.grid(row=0,column=1)
+        sai.mainloop()
+    spe+=0.0001
+
+
+
+
+
+
+
+
+
+
+
+
+
